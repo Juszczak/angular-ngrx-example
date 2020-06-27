@@ -17,4 +17,8 @@ export class TodosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public addTodo(text: string) {
+    console.log('add todo: ', text);
+  }
+
 }
