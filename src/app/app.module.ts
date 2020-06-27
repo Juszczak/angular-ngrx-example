@@ -12,6 +12,7 @@ import { todosReducer } from './todos/todos.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AngularFireModule } from '@angular/fire';
 import { TodosEffects } from './todos/todos.effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [AppComponent, CounterComponent, TodosComponent],
@@ -37,6 +38,7 @@ import { TodosEffects } from './todos/todos.effects';
       authDomain: 'angular-ngrx-example.firebaseapp.com',
       messagingSenderId: '738377019523',
     }),
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
