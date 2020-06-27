@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { TodosState } from './todos.state';
-import { addTodo } from './todos.actions';
+import { addTodo, updateTodo } from './todos.actions';
 
 const initialState: TodosState = {
   list: [],
@@ -14,4 +14,13 @@ export const todosReducer = createReducer(
     ...state,
     list: [...state.list, action.todo],
   })),
+
+  on(updateTodo, (state, action) => {
+    const index = state.list.findIndex((todo) => todo.id === action.id);
+    const newTodo = {...state.list[index], done: action.done};
+    const newList = [...state.list];
+    newList[index] = newTodo;
+
+    return {...state, list: newList};
+  }),
 );
