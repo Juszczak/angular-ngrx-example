@@ -1,24 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
-import { selectTodosList, selectIsListEmpty } from './todos.selectors';
+import { addTodo } from './todos.actions';
+import { selectIsListEmpty, selectTodosList } from './todos.selectors';
 
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
-  styleUrls: ['./todos.component.scss']
+  styleUrls: ['./todos.component.scss'],
 })
 export class TodosComponent implements OnInit {
   public todos$ = this.store.select(selectTodosList);
   public empty$ = this.store.select(selectIsListEmpty);
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public addTodo(text: string) {
-    console.log('add todo: ', text);
-  }
+    const todo = {
+      text,
+      done: false,
+      timestamp: Date.now(),
+    };
 
+    this.store.dispatch(addTodo({ todo }));
+  }
 }
