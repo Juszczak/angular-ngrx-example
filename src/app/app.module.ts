@@ -9,6 +9,7 @@ import { CounterComponent } from './counter/counter.component';
 import { counterReducer } from './counter/counter.reducer';
 import { TodosComponent } from './todos/todos.component';
 import { todosReducer } from './todos/todos.reducer';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent, CounterComponent, TodosComponent],
@@ -23,6 +24,7 @@ import { todosReducer } from './todos/todos.reducer';
       {},
     ),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent],
