@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "angular-ngrx-example"
+  },
+  "targets": {
+    "angular-ngrx-example": {
+      "hosting": {
+        "angular-ngrx-example": [
+          "angular-ngrx-example"
+        ]
+      }
+    }
+  }
+}

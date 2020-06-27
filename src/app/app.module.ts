@@ -10,6 +10,8 @@ import { counterReducer } from './counter/counter.reducer';
 import { TodosComponent } from './todos/todos.component';
 import { todosReducer } from './todos/todos.reducer';
 import { EffectsModule } from '@ngrx/effects';
+import { AngularFireModule } from '@angular/fire';
+import { TodosEffects } from './todos/todos.effects';
 
 @NgModule({
   declarations: [AppComponent, CounterComponent, TodosComponent],
@@ -24,7 +26,17 @@ import { EffectsModule } from '@ngrx/effects';
       {},
     ),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([ TodosEffects ]),
+    AngularFireModule.initializeApp({
+      projectId: 'angular-ngrx-example',
+      appId: '1:738377019523:web:918e8f862aeff330c2ebb6',
+      databaseURL: 'https://angular-ngrx-example.firebaseio.com',
+      storageBucket: 'angular-ngrx-example.appspot.com',
+      locationId: 'europe-west',
+      apiKey: 'AIzaSyDwN3Q_bymnn3dElSyokLvHH5OmubJ04g4',
+      authDomain: 'angular-ngrx-example.firebaseapp.com',
+      messagingSenderId: '738377019523',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
