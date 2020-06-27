@@ -5,9 +5,19 @@
 </div>
 
 <div *ngFor="let todo of todos$ | async">
-  {{ todo | json }}
+  <input
+    #checkbox
+    type="checkbox"
+    [checked]="todo.done"
+    (change)="updateTodo(todo, checkbox.checked)"
+  />
+  <span>{{ todo.text }}</span>
 </div>
 
 <div>
-  <input #todoText placeholder="Enter new todo text…" (keyup.enter)="addTodo(todoText.value); todoText.value = ''" />
+  <input
+    #todoText
+    placeholder="Enter new todo text…"
+    (keyup.enter)="addTodo(todoText.value); todoText.value = ''"
+  />
 </div>
