@@ -6,3 +6,7 @@ export const addTodo = createAction('todos/add', props<{ todo: Todo }>());
 export const updateTodo = createAction('todos/update', props<{ id: string, done: boolean }>());
 
 export const updateSearchQuery = createAction('todos/search', props<{ searchQuery: string }>());
+
+export const fetchTodos = createAction('todos/fetch');
+
+export const setTodos = createAction('todos/set', props<{ todos: Todo[] }>());

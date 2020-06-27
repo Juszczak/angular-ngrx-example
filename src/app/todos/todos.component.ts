@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
-import { addTodo, updateTodo, updateSearchQuery } from './todos.actions';
+import { addTodo, updateTodo, updateSearchQuery, fetchTodos } from './todos.actions';
 import { selectIsListEmpty, selectTodosList } from './todos.selectors';
 import { Todo } from './todo.interface';
 
@@ -16,7 +16,9 @@ export class TodosComponent implements OnInit {
 
   constructor(private store: Store<AppState>) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store.dispatch(fetchTodos());
+  }
 
   public addTodo(text: string) {
     const todo = {
