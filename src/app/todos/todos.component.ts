@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
-import { addTodo, updateTodo } from './todos.actions';
+import { addTodo, updateTodo, updateSearchQuery } from './todos.actions';
 import { selectIsListEmpty, selectTodosList } from './todos.selectors';
 import { Todo } from './todo.interface';
 
@@ -31,5 +31,9 @@ export class TodosComponent implements OnInit {
 
   public updateTodo(todo: Todo, done: boolean) {
     this.store.dispatch(updateTodo({ id: todo.id, done }));
+  }
+
+  public updateSearchQuery(searchQuery: string) {
+    this.store.dispatch(updateSearchQuery({ searchQuery }));
   }
 }

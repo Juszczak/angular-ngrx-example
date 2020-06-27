@@ -1,5 +1,7 @@
 <h2>Todos</h2>
 
+<input #search placeholder="Search…" (keyup)="updateSearchQuery(search.value)" />
+
 <div *ngIf="empty$ | async">
   The list is empty.
 </div>
