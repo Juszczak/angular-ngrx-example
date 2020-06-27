@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CounterComponent } from './counter/counter.component';
-import { TodosComponent } from './todos/todos.component';
-import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './counter/counter.reducer';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
+import { TodosComponent } from './todos/todos.component';
+import { todosReducer } from './todos/todos.reducer';
 
 @NgModule({
   declarations: [AppComponent, CounterComponent, TodosComponent],
@@ -17,6 +18,7 @@ import { environment } from '../environments/environment';
     StoreModule.forRoot(
       {
         counter: counterReducer,
+        todos: todosReducer,
       },
       {},
     ),

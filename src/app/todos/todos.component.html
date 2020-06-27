@@ -1,1 +1,9 @@
-<p>todos works!</p>
+<h2>Todos</h2>
+
+<div *ngIf="empty$ | async">
+  The list is empty.
+</div>
+
+<div *ngFor="let todo of todos$ | async">
+  {{ todo | json }}
+</div>
