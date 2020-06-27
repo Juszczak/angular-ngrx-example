@@ -5,7 +5,7 @@ export const selectTodosFeature = createFeatureSelector<TodosState>('todos');
 
 export const selectTodosList = createSelector(
   selectTodosFeature,
-  (state) => state.list
+  (state) => state.searchQuery ? state.list.filter((todo) => todo.text.includes(state.searchQuery)) : state.list
 );
 
 export const selectIsListEmpty = createSelector(
